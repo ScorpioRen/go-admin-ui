@@ -145,7 +145,7 @@
         <el-drawer
           ref="drawer"
           :title="title"
-          :before-close="handleClose"
+          :before-close="cancel"
           :visible.sync="open"
           direction="rtl"
           custom-class="demo-drawer"
@@ -272,21 +272,10 @@ export default {
   },
   methods: {
     handleClose(done) {
-      // if (this.loading) {
-      //   return
-      // }
-      // this.$confirm('需要提交表单吗？')
-      //   .then(_ => {
-      //     this.loading = true
-      //     this.timer = setTimeout(() => {
-      //       done()
-      //       // 动画关闭需要一定的时间
-      //       setTimeout(() => {
-      //         this.loading = false
-      //       }, 400)
-      //     }, 2000)
-      //   })
-      //   .catch(_ => {})
+      if (this.loading) {
+        return
+      }
+      done()
     },
     /** 查询参数列表 */
     getList() {
